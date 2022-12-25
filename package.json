@@ -23,6 +23,9 @@
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "solc": "^0.8.17",
+    "truffle": "^5.7.1",
+    "truffle-hdwallet-provider": "^1.0.17",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
