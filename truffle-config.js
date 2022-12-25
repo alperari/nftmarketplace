@@ -47,17 +47,17 @@ module.exports = {
       network_id: "*", // Any network (default: none)
     },
 
-    goerliETH: {
-      provider: function () {
-        return new HDWalletProvider(
-          MNEMONIC,
-          `https://goerli.infura.io/v3/${INFURA_API_KEY}`
-        );
-      },
-      network_id: "5", // eslint-disable-line camelcase
-      gas: 4465030,
-      gasPrice: 10000000000,
-    },
+    // goerliETH: {
+    //   provider: function () {
+    //     return new HDWalletProvider(
+    //       MNEMONIC,
+    //       `https://goerli.infura.io/v3/${INFURA_API_KEY}`
+    //     );
+    //   },
+    //   network_id: "5", // eslint-disable-line camelcase
+    //   gas: 4465030,
+    //   gasPrice: 10000000000,
+    // },
 
     // Another network with more advanced options...
     // advanced: {
