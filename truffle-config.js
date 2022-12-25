@@ -17,12 +17,11 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
+require("dotenv").config();
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
-//
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+var HDWalletProvider = require("truffle-hdwallet-provider");
+const MNEMONIC = process.env.MNEMONIC;
+const INFURA_API_KEY = process.env.INFURA_API_KEY;
 
 module.exports = {
   /**
@@ -44,8 +43,20 @@ module.exports = {
     //
     development: {
       host: "127.0.0.1", // Localhost (default: none)
-      port: 8545, // Standard Ethereum port (default: none)
+      port: 7545, // Standard Ethereum port (default: none)
       network_id: "*", // Any network (default: none)
+    },
+
+    goerliETH: {
+      provider: function () {
+        return new HDWalletProvider(
+          MNEMONIC,
+          `https://goerli.infura.io/v3/${INFURA_API_KEY}`
+        );
+      },
+      network_id: "5", // eslint-disable-line camelcase
+      gas: 4465030,
+      gasPrice: 10000000000,
     },
 
     // Another network with more advanced options...
@@ -82,18 +93,15 @@ module.exports = {
     // timeout: 100000
   },
 
-  // Configure your compilers
+  contracts_directory: "./contracts/",
+  contracts_build_directory: "./contracts/abis/",
   compilers: {
     solc: {
-      // version: "0.5.1",    // Fetch exact version from solc-bin (default: truffle's version)
-      // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
-      // settings: {          // See the solidity docs for advice about optimization and evmVersion
-      //  optimizer: {
-      //    enabled: false,
-      //    runs: 200
-      //  },
-      //  evmVersion: "byzantium"
-      // }
+      version: "0.8.4",
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
     },
   },
 };
